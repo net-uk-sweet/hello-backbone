@@ -1,28 +1,63 @@
 define([
 
 	// Libraries
+	'jquery',
+	'lodash',
 	'backbone',
 	'marionette',
 	'app',
 
-	// Collections
-	'collections/leads-collection',
+	// Models
+	'models/simple-model',
 
 	// Views
-	'views/login-view'
+	'views/simple-view'
 ],
 
-function(Backbone, Marionette, App, LeadsList, LoginView) {
+function($, _, Backbone, Marionette, App, SimpleModel, SimpleView) {
 
 	'use strict';
 
 	return {
 
-		handleIndexRoute: function() {
+		// Marionette.Controller has an initialize method by default
+		initialize: function() {
 
-			console.log('Controller.handleIndexRoute:');
+			console.log('Controller.initialize:');
 
-			// Getch the leads list from webSQL
+			// We can do any setup required here
+
+			// On initialisation, we always need to go to log-in
+			this.handleLoginRoute();
+
+			//this.handleLocalStorageRoute();
+		},
+
+		handleLoginRoute: function() {
+		
+			console.log('Controller.handleLoginRoute:');
+
+			// Need to load local data after successful log-in so we
+			// can decide whether we need to restore an earlier session
+
+			// App can manage our views
+			$.mobile.changePage('#login', { reverse: false, changeHash: false });
+		},
+
+		handleAdminRoute: function() {
+
+			console.log('Controller.handleAdminRoute:');
+
+			$.mobile.changePage('#admin', { reverse: true, changeHash: false });
+		},
+
+		handleLocalStorageRoute: function() {
+
+			console.log('Controller.handleLocalStorageRoute:');
+
+			//App.main.show(new MainLayout());
+
+			// Fetch the leads list from webSQL
 			var leadsList = new LeadsList();
 			leadsList.fetch({
 				success: function(collection) {
@@ -32,11 +67,6 @@ function(Backbone, Marionette, App, LeadsList, LoginView) {
 					);
 				}
 			});
-		},
-
-		handleAdminRoute: function() {
-
-			console.log('Controller.handleAdminRoute:');
 		}
 	};
 });

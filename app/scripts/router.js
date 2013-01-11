@@ -16,7 +16,8 @@ function(Backbone, Marionette, controller) {
   var AppRouter = Backbone.Marionette.AppRouter.extend({
 
     appRoutes: {
-      '': 'handleIndexRoute',
+      '': 'initialize',
+      'login': 'handleLoginRoute',
       'admin': 'handleAdminRoute'
     }
   });

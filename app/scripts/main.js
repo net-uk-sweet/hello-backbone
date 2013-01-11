@@ -28,18 +28,25 @@ function($, Backbone, App, router) {
     deviceReadyDeferred.resolve();
   }
 
+  // -----------------------------------------------------
   // jQuery Mobile configuration
+  // TODO: better if this was abstracted to a separate configuration file
+
   $(document).on('mobileinit', function() {
 
     console.log('Main.mobileinit:');
-    // TODO: would be nice to abstract this into a separate configuration file
 
     // Prevents all anchor click handling including the addition of active button state and alternate link blurring.
     $.mobile.linkBindingEnabled = false;
 
     // Disabling this will prevent jQuery Mobile from handling hash changes
     $.mobile.hashListeningEnabled = false;
+
+    // Set the default page transition
+    $.mobile.defaultPageTransition = 'flip';
   });
+
+  // -----------------------------------------------------
 
   if (navigator.userAgent.match(/(iPad|iPhone|Android)/)) {
     // This is running on a device so waiting for deviceready event

@@ -1,15 +1,17 @@
 define([
 
-	'app',
-
 	// libs
+	'jquery',
+	'lodash',
 	'backbone',
 
-	// Views
+	'app',
+
+	// views
 	'views/lead-view'
 ],
 
-function(App, Backbone, LeadView) {
+function($, _, Backbone, App, LeadView) {
 
 	'use strict';
 

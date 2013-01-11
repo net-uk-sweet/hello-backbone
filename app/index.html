@@ -5,26 +5,38 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <title></title>
         <meta name="description" content=""/>
-        <meta name="viewport" content="width=device-width"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
         <link rel="stylesheet" href="styles/index.css"/>
         <link rel="stylesheet" href="styles/jquery.mobile-1.2.0.css"/>
     </head>
     <body>
 
+    <div id="login" data-role="page"> 
+        <div data-role="header"><h1>Login header</h1></div> 
+        <div data-role="content"><a data-role="nav-main" href="#admin">Go to Admin</a></div> 
+        <div data-role="footer">Footer</div> 
+    </div> 
+
+    <div id="admin" data-role="page"> 
+        <div data-role="header"><h1>Admin header</h1></div> 
+        <div data-role="content"><a data-role="nav-main" href="#login">Go to Login</a></div> 
+        <div data-role="footer">Footer</div> 
+    </div>
+    
 
         <!-- Main container. -->
-        <div id="page" data-role="page" data-url="page">
+        <!-- div id="page" data-role="page" data-url="page">
 
             <div data-role="header">
                 <h1>My Title</h1>
-            </div><!-- /header -->
+            </div>
 
             <div id="content" data-role="content">   
                 <p>Hello world</p>      
-            </div><!-- /content -->
+            </div>
 
-        </div><!-- /page --> 
+        </div -->
 
 
         <!-- for remote debugging with WEINRE -->
