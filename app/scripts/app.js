@@ -37,7 +37,9 @@ function($, _, Backbone, Marionette) {
   App.addRegions({
     // Backbone.Marionette views will use the content div
     // of our jqm page as their target
-    main: '#content'
+    header: '#header',
+    content: '#content',
+    footer: '#footer'
   });
 
   // Adds any methods to be run after the app was initialized.
@@ -75,9 +77,9 @@ function($, _, Backbone, Marionette) {
     // See also the extension to Marionette.CollectionView above.
     // This is a good hook for that logic as the event is triggered any time the
     // Application level RegionManager is populated with a new view.
-    App.main.on('show', function() {
+    App.content.on('show', function() {
       console.log('App.main.show: ');
-      App.$page.trigger('create');
+      $('#page').trigger('create');
     });
 
     // Capture Application events

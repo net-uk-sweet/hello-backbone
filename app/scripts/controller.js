@@ -13,10 +13,11 @@ define([
 	// Views
 	'views/login-view',
 	'views/admin-view',
-	'views/component-view'
+	'views/component-view',
+	'views/dialog-view'
 ],
 
-function($, _, Backbone, Marionette, App, LeadsList, LoginView, AdminView, ComponentView) {
+function($, _, Backbone, Marionette, App, LeadsList, LoginView, AdminView, ComponentView, DialogView) {
 
 	'use strict';
 
@@ -35,7 +36,7 @@ function($, _, Backbone, Marionette, App, LeadsList, LoginView, AdminView, Compo
 			console.log('Controller.handleLoginRoute:');
 
 			// It's really just a nav view for the time being
-			App.main.show(new LoginView());
+			App.content.show(new LoginView());
 		},
 
 		handleAdminRoute: function() {
@@ -48,7 +49,7 @@ function($, _, Backbone, Marionette, App, LeadsList, LoginView, AdminView, Compo
 				success: function(collection) {
 
 					// Create a basic admin view and pass it the collection
-					App.main.show(
+					App.content.show(
 						new AdminView({ collection: collection })
 					);
 				}
@@ -59,7 +60,15 @@ function($, _, Backbone, Marionette, App, LeadsList, LoginView, AdminView, Compo
 
 			console.log('Controller.handleComponentRoute:');
 
-			App.main.show(new ComponentView());
+			App.content.show(new ComponentView());
+		},
+
+		handleDialogRoute: function() {
+
+			console.log('Controller.handleDialogRoute:');
+        	$('#page').attr('data-role', 'dialog');
+			App.content.show(new DialogView());
+			$('#page').popup('open');
 		}
 	};
 });

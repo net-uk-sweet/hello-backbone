@@ -8,21 +8,21 @@ define([
 	'app',
 
 	// templates
-	'text!templates/login.html'
+	'text!templates/dialog.html'
 ],
 
-function($, _, Backbone, App, loginTemplate) {
+function($, _, Backbone, App, dialogTemplate) {
 
 	'use strict';
 
-	var LoginView = Backbone.Marionette.ItemView.extend({
+	var DialogView = Backbone.Marionette.ItemView.extend({
 
-		template: _.template(loginTemplate),
+		template: _.template(dialogTemplate),
 
 		events: {
 
 			// TODO: using radio buttons here was causing an error when route updated to component
-			/*'change input[type="radio"]' : 'handleClick',*/
+			'change input[type="radio"]' : 'handleClick',
 
 			'click button': 'handleClick'
 		},
@@ -39,9 +39,9 @@ function($, _, Backbone, App, loginTemplate) {
 		},
 
 		handleClick: function(e) {
-			App.vent.trigger('login:navigate', $(e.currentTarget).attr('id'));
+			App.vent.trigger('login:navigate', $(e.currentTarget).val());
 		}
 	});
 
-	return LoginView;
+	return DialogView;
 });
